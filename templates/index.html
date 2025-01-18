@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XAI Interface</title>
+    <link rel="stylesheet" href="../static/styles/index.css">
+</head>
+<body>
+    <div id="window">
+        <div id="header">  
+            <div id="h1">XAI Interface For HR Management - {{status}}</div>
+        </div>
+        <div id="box">
+            <div id="selection_section">
+                {% for i in range(0,size) %}
+                <form method="POST" action="/">
+                    <input type="submit" id="cand" name="cand_value" value="Candidate {{ i+1 }}">
+                </form>
+                {% endfor %}
+            </div>
+            <div id="cand_section">
+                <br>
+                <div id="cand_head">CANDIDATE DETAILS</div> 
+                <br>
+                <label class="label">Age :</label>
+                <label class="label_value">{{cand_data["Age"]}}</label>
+                <br>
+                <label class="label">Ed Level :</label>
+                <label class="label_value">{{cand_data["EdLevel"]}}</label>
+                <br>
+                <label class="label">Years of Code :</label>
+                <label class="label_value">{{cand_data["YearsCode"]}}</label>
+                <br>
+                <label class="label">Years of Code as Pro :</label>
+                <label class="label_value">{{cand_data["YearsCodePro"]}}</label>
+                <br>
+                <label class="label">Skils :</label>
+                    <label class="label_value">
+                    {% for i in skills %}
+                        <label id="skills" class="label_value">{{i}} |</label>
+                    {% endfor %}
+                    </label>
+                <br>
+            </div>
+            <div id="exp_section">
+                <div id="lime_section">
+                    <div id="lime_head">LIME EXPLAINATION</div> 
+                    <br>
+                    <br>
+                    {{ info|safe }}
+                </div>
+                <div id="shap_section">
+                    <div id="shap_head">SHAP EXPLAINATION</div> 
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
